@@ -1,0 +1,9 @@
+VM的共享文件夹
+首先，在VM12中选择"重新安装VMware Tools",这样会在centos中安装一个cdrom,具体的路径为/media/VMware Tools
+#cp media/VMware Tools/VMwareTools-9.6.2-1688356.tar.gz  /tmp
+
+#cd /tmp
+#tar zxvf  VMwareTools-5.5.0-18463.tar.gz
+#cd vmware-tools-distrib
+#./vmware-install.pl
+

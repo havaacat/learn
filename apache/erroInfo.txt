@@ -1,0 +1,5 @@
+1.½â¾öhttpd: Could not reliably determine the server's fully qualified domain name
+#vi /etc/httpd/conf/httpd.conf/httpd
+###Ìí¼ÓServerName 127.0.0.1:80
+#service restart
+
