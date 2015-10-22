@@ -1,0 +1,21 @@
+安装mod_xsendfile模块
+1.首先安装httpd-devel.i686
+#yum search aps
+#yum install httpd-devel.i686
+2.下载mod_xsendfile
+#wget https://tn123.org/mod_xsendfile/mod_xsendfile-0.12.tar.gz#hash(sha256:9078ec28697d672a7f8aa3a19180109c1ccf73dc6aa335e856d1129344566b7e)
+#tar zxvf mod_xsendfile-0.12.tar.gz
+#apxs -cia mod_xsendfile.c
+3.重启httpd
+#service httpd restart
+4.apache配置修改
+#vi /etc/httpd/conf.d/xsendfile.conf
+###mod_xsendfile configuration
+XSendFile on
+XSendFilePath /opt/downloads
+<VirtualHost *>
+	ServerName someserver 
+	XSendFilePath /home/userxyz 
+</VirtualHost>
+###/opt/downloads中的文件，具有755的权限
+#chmod 755 /opt/downloads/*

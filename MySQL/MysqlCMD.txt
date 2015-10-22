@@ -1,0 +1,65 @@
+一、简单授权指令
+
+1.登录MySQL
+输入mysql -u root和密码即可登录到Mysql。
+
+2.选择数据表
+语句如下：use mysql;
+
+3.在mysql的user表中增加连接用户
+GRANT USAGE ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+
+其中：
+“username”替换为将要授权的用户名，比如clientusr；
+“password”替换为clientusr设置的密码；
+
+4.可访问数据表授权
+创建好帐户之后，就开始给上面的common user进行数据表授权，步骤3中增加的连接用户默认权限都是“N”的，必须在db表中为该帐户授权，允许其访问专用数据库，当然超级用户就不说了。
+使用下面语句：
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON tbx.*  TO 'username'@'localhost' IDENTIFIED BY 'password';
+本语句中的权限根据实际需要确定：
+"tbx"替换为授权访问的数据表table名
+"username"是步骤2授权用户名
+"password"是步骤2授权用户的设置密码
+这样就为该用户授予了对某数据表的SELECT, INSERT, UPDATE, DELETE, CAREATE, DROP权限。
+
+5.生效授权，创建完毕
+FLUSH PRIVILEGES;
+备注：
+1)不要直接使用INSERT语句添加user记录，使用INSERT可能出现：ERROR 1364 (HY000): Field 'ssl_cipher' doesn't have a default value错误。不过早期的MYSQL版本笔者倒没出现这个错误，因为天缘一直都是直接修改user表或直接使用INSERT语句完成，后来升级MYSQL到5.1的时候，发现可能会出现这个错误。
+2)上文3和4，也可使用一句话GRANT ALL ON tbx.* TO 'username' IDENTIFIED BY 'password'，这句话会自动创建username并为之授权。更多授权权限可参考MYSQL官方网站。
+
+6.导入数据
+mysqljump -u root -p zhixin < ./zhixin.sql;
+source zhixin.sql;
+
+7.修改表中字段
+添加字段：
+alter table 表名
+Add column 字段名 字段类型  默认值 AFTER 字段名 (在哪个字段后面添加)
+例子：
+alter table appstore_souapp_app_androidmarket
+Add column getPriceCurrency varchar(50)   default null AFTER getPrice
+
+修改字段：
+alter table表名
+change 字段名 新字段名 字段类型 默认值
+例子：
+alter table appstore_souapp_app_androidmarket change hasPrice hasPrice varchar(10)  null;
+
+删除字段：
+alter table 表名 drop column 字段名
+例子：
+alter table appstore_souapp_app_androidmarket
+drop column getPriceCurrency
+
+调整字段顺序：
+alter table 表名
+change 字段名 新字段名 字段类型 默认值 after 字段名(跳到哪个字段之后)
+例子：
+alter table appstore_souapp_app_androidmarket
+change getPriceCurrency getPriceCurrency varchar(50)  default null AFTER getPrice
+
+ALTER TABLE zx_downloads drop PRIMARY KEY;
+ALTER TABLE zx_downloads ADD id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY;
+CHANGE 

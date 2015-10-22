@@ -1,0 +1,19 @@
+###放入apache根目录
+#tar xvfz phpMyAdmin-3.5.5-all-languages.tar.gz
+#mv phpMyAdmin-3.5.5-all-languages phpmyadmin
+#cd phpmyadmin
+#cp config.sample.inc.php config.inc.php
+#service httpd restart
+
+###出现问题The mbstring extension is missing. Please check your PHP configuration.
+#yum search php |grep ^php  //查看yum上安装包
+#yum install php56w-mbstring.i386
+#yum install php56w-mcrypt.i386
+#yum install mod_ssl.i686
+#vi /usr/share/phpmyadmin/config.inc.php
+###cfg['blowfish_secret'] = '在此填入口令';
+###修改phpMyAdmin的root密码
+#update user set password=password('123456') where User='root'
+
+###默认情况下，CentOS 7上的phpMyAdmin只允许从回环地址(127.0.0.1)访问。为了能远程连接，你需要改动它的配置。
+

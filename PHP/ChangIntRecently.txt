@@ -1,0 +1,15 @@
+upload_max_filesize = 100M  //2M
+post_max_size = 512M  //8M
+max_input_time = 60
+memory_limit = 600M  //128M
+max_execution_time =  //30s
+
+
+
+
+php_value memory_limit 200M
+php_value post_max_size 100M
+php_value upload_max_filesize 100M
+php_value max_execution_time 400
+php_value max_input_time 400
+php_value display_errors On
