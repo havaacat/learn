@@ -1,0 +1,71 @@
+1.json_decode() (PHP 5 >= 5.2.0, PECL json >= 1.2.0) ,对 JSON 格式的字符串进行编码 
+
+说明 
+mixed json_decode ( string $json [, bool $assoc ] ) 
+接受一个 JSON 格式的字符串并且把它转换为 PHP 变量 
+
+参数
+json 
+待解码的 json string 格式的字符串。 
+
+assoc 
+当该参数为 TRUE 时，将返回 array 而非 object 。 
+
+返回值 
+Returns an object or if the optional assoc parameter is TRUE, an associative array is instead returned. 
+
+Example #1 json_decode() 的例子 
+<?php 
+$json = '{"a":1,"b":2,"c":3,"d":4,"e":5}'; 
+var_dump(json_decode($json)); 
+var_dump(json_decode($json, true)); 
+?> 
+
+object(stdClass)#1 (5) { 
+["a"] => int(1) 
+["b"] => int(2) 
+["c"] => int(3) 
+["d"] => int(4) 
+["e"] => int(5) 
+} 
+
+array(5) { 
+["a"] => int(1) 
+["b"] => int(2) 
+["c"] => int(3) 
+["d"] => int(4) 
+["e"] => int(5) 
+} 
+
+
+2.json_encode(),(PHP 5 >= 5.2.0, PECL json >= 1.2.0),对变量进行 JSON 编码 
+
+string json_encode ( mixed $value [, int $options = 0 ] ) ,返回 value 值的 JSON 形式 
+
+value 
+待编码的 value ，除了resource 类型之外，可以为任何数据类型,该函数只能接受 UTF-8 编码的数据 
+
+options 
+由以下常量组成的二进制掩码： JSON_HEX_QUOT, JSON_HEX_TAG, JSON_HEX_AMP, JSON_HEX_APOS, JSON_NUMERIC_CHECK, JSON_PRETTY_PRINT, JSON_UNESCAPED_SLASHES, JSON_FORCE_OBJECT, JSON_UNESCAPED_UNICODE. 
+
+编码成功则返回一个以 JSON 形式表示的 string 或者在失败时返回 FALSE 。 
+
+例1：
+<?php 
+$arr = array ('a'=>1,'b'=>2,'c'=>3,'d'=>4,'e'=>5); 
+echo json_encode($arr); 
+?> 
+{"a":1,"b":2,"c":3,"d":4,"e":5} 
+
+例2：
+$obj->Name= 'a1';$obj->Number ='123'; 
+$obj->Contno= '000'; 
+echo json_encode($obj); 
+
+{"Name":"a1", 
+"Number":"123", 
+"Contno":"000" 
+} 
+
+
+

@@ -11,3 +11,4 @@
 2.warning: LF will be replaced by CRLF in AppData/Local/Adobe/Acrobat/11.0/AdobeCM                                                                                                                                                                                               apFnt11.lst.
 git config core.autoctlf false
 
+
