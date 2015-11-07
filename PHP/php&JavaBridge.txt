@@ -1,0 +1,12 @@
+
+1.先在centOS上安装Java
+2.在JavaBridge所在的目录执行
+java -jar JavaBridge.jar SERVLET_LOCAL:8081
+		   java -jar JavaBridge.jar HTTP_LOCAL:8081 3 JavaBridge.log
+Example 1: java -jar JavaBridge.jar
+Example 2: java -jar JavaBridge.jar HTTP_LOCAL:8080 3 JavaBridge.log
+Example 3: java -Djavax.net.ssl.keyStore=mySrvKeystore -Djavax.net.ssl.keyStorePassword=YOURPASSWD -jar JavaBridge.jar HTTPS:8443 3 JavaBridge.log
+
+3.在java.inc中配置define ("JAVA_HOSTS", "127.0.0.1:8081");
+注意，配置的端口要一样
+
