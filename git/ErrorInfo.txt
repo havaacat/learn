@@ -8,6 +8,6 @@
     4、找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc
     5、找到一个名为gitconfig的文件，打开它把里面的[remote "origin"]那一行删掉就好了！
 
-2.git@git.coding.net:michaelz/zhixin.git
-https://git.coding.net/michaelz/zhixin.git
-https://git.coding.net/zhongw/test.git
+2.warning: LF will be replaced by CRLF in AppData/Local/Adobe/Acrobat/11.0/AdobeCM                                                                                                                                                                                               apFnt11.lst.
+git config core.autoctlf false
+

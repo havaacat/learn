@@ -3,3 +3,7 @@
 ###添加ServerName 127.0.0.1:80
 #service restart
 
+2.CentOS6.0 下默认开selinux时出现httpd 报“SELinux policy enabled; httpd running as context unconfined_u:system”的解决方案
+#yum install policycoreutils-python
+#setsebool -P httpd_use_nfs 1
+#setsebool -P httpd_enable_homedirs 1
