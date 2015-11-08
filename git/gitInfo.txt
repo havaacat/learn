@@ -1,0 +1,6 @@
+查看全局和本地信息
+
+1.git config --local --list
+
+2.git config --global --list
+
