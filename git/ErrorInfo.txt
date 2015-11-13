@@ -11,4 +11,12 @@
 2.warning: LF will be replaced by CRLF in AppData/Local/Adobe/Acrobat/11.0/AdobeCM                                                                                                                                                                                               apFnt11.lst.
 git config core.autoctlf false
 
+3.error: The branch 'feature-videobak' is not fully merged.
+#If you want to be more accurate, you can exclude branches that have not been merged into master:
+git checkout master
+git branch --merged master | xargs git branch -d
+
+#And if you want to be really accurate, then you can exclude master too:
+git checkout master
+git branch --merged master | grep -v ^\* | xargs git branch -d
 

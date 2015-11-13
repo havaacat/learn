@@ -1,4 +1,4 @@
-
+﻿
 1.先在centOS上安装Java
 2.在JavaBridge所在的目录执行
 java -jar JavaBridge.jar SERVLET_LOCAL:8081

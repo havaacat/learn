@@ -1,0 +1,4 @@
+友好的远程连接linux
+1.下载putty
+2.安装字体MONACO.TTF
+3.安装tmux

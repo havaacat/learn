@@ -1,0 +1,13 @@
+    //Use it accept the POST conditions 
+    public function createSQL($array)
+    {
+        $sql = "";
+        foreach( $array as $index => $arr){
+            if(!empty($array[$index]) && empty($sql)){
+                $sql .= $index.' like \'%'.$array[$index].'%\'';
+            }else if(!empty($array[$index]) && !empty($sql)){
+                $sql .= ' and '.$index.' like \'%'.$array[$index].'%\'';
+            }
+        }
+        return $sql;
+    }
