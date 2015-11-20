@@ -1,4 +1,4 @@
-一、简单授权指令
+﻿一、简单授权指令
 
 1.登录MySQL
 输入mysql -u root和密码即可登录到Mysql。
@@ -17,6 +17,7 @@ GRANT USAGE ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password' WITH GRANT
 创建好帐户之后，就开始给上面的common user进行数据表授权，步骤3中增加的连接用户默认权限都是“N”的，必须在db表中为该帐户授权，允许其访问专用数据库，当然超级用户就不说了。
 使用下面语句：
 GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON tbx.*  TO 'username'@'localhost' IDENTIFIED BY 'password';
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON production_1120.*  TO 'zhixin'@'localhost' IDENTIFIED BY 'password';
 本语句中的权限根据实际需要确定：
 "tbx"替换为授权访问的数据表table名
 "username"是步骤2授权用户名
