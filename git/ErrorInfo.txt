@@ -1,4 +1,4 @@
-1.错误提示：fatal: remote origin already exists.  
+﻿1.错误提示：fatal: remote origin already exists.  
 	$ git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git 
     提示出错信息：fatal: remote origin already exists.
     解决办法如下：
@@ -19,4 +19,14 @@ git branch --merged master | xargs git branch -d
 #And if you want to be really accurate, then you can exclude master too:
 git checkout master
 git branch --merged master | grep -v ^\* | xargs git branch -d
+
+4.error: The following untracked working tree files would be overwritten by checko                                                                                                                                                                                               ut:
+        app/controllers/StatisticsController.php
+Please move or remove them before you can switch branches.
+Aborting
+
+git clean -d -f
+d -----删除未被添加到git的路径中的文件
+f -----强制运行
+
 

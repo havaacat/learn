@@ -1,0 +1,23 @@
+public function getDay($day,$num,$type)
+{
+	if($num > 0){
+		$num = $num - 1;    
+	}else{
+		return array(strtotime('20380119'), strtotime('20380119'));
+	}        
+	if($type == 1){
+		$firstDayThisWeekBySec = strtotime($day) - (date("N",$day) - 1)*86400;
+		$firstDayThisWeek = date('Y-m-d',$firstDayThisWeekBySec);
+		$firstDay = date('Y-m-d', strtotime("$firstDayThisWeek - $num weeks"));
+		$lastDay  = date('Y-m-d', strtotime("$firstDayThisWeek + 1 week"));
+	}else if($type == 2){
+		$firstDay = date('Y-m-01', strtotime("$day - $num months"));
+		$lastDay  = date('Y-m-01', strtotime("$day + 1 month"));
+	}else{
+		$firstDay = '19700101';
+		$lastDay  = '20380119';
+	}
+	$firstDay = strtotime($firstDay);
+	$lastDay  = strtotime($lastDay);
+	return array($firstDay, $lastDay);
+}
