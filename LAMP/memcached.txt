@@ -1,0 +1,54 @@
+Memcache安装
+一、服务器端的安装
+1.安装memcached
+yum install memcached 
+/usr/bin/memcached -d -l 127.0.0.1 -p 11211 -m 100 -u root
+ps -ef | grep memcach
+
+二、客户端的安装
+1.安装libmemcached
+tar zxvf libmemcached-1.0.18.tar.gz 
+./configure --prefix=/usr/lib/libmemcached
+make && make install
+
+注：memcached和memcache扩展安装任选其一
+2.PHP安装memcached扩展
+/usr/local/php/bin/phpize
+./configure \
+--with-php-config=/usr/local/php/bin/php-config \
+--with-libmemcached-dir=/usr/lib/libmemcached
+vi /etc/php.ini
+extension=memcached.so
+
+3.为PHP安装memcache扩展
+wget -b http://pecl.php.net/get/memcache-2.2.5.tgz
+tar zxf memcache-2.2.5
+
+/usr/local/php/bin/phpize
+./configure \
+--enable-memcache \
+--with-php-config=/usr/local/php/bin/php-config
+make && make install 
+#Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/
+vi /etc/php.ini
+extension=memcache.so
+重启服务
+php -m|grep memcache
+
+
+
+三、memcache在PHP中的使用
+系统类：addServer,addServers,getStats,getVersion
+数据类：add,set,delete,flush,replace,increment,get,
+进阶类: setMulti,deleteMulti,getMulti,getResultCode,getResultMessage
+
+四、封装自己的Memcache类
+扩展性、可调试、尽量简便的操作，一个方法多种功能
+
+
+
+
+
+
+
+
