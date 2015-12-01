@@ -1,19 +1,19 @@
-PHP��������̵�һЩҪ��
-ת:http://www.111cn.net/phper/php/42636.htm
+PHP面向对象编程的一些要点
+转:http://www.111cn.net/phper/php/42636.htm
 
-һ�������ࣨabstract��
-������ʵ�ʿ��������У���Щ�ಢ����Ҫ��ʵ��������ǰ��ѧϰ����һЩ���࣬��Ҫ�����������̳У�����������ߴ��븴�����﷨�ṹ��
-abstract class ����{
-	���� $name;
-	����(){}  //����Ҳ����Ϊabstract ���η� function ������(){}
+一、抽像类（abstract）
+在我们实际开发过程中，有些类并不需要被实例化，如前面学习到的一些父类，主要是让子类来继承，这样可以提高代码复用性语法结构：
+abstract class 类名{
+	属性 $name;
+	方法(){}  //方法也可以为abstract 修饰符 function 方法名(){}
 }
 
 abstract class animal{
 	public $name;
 	public $age;
-	//���󷽷������з����壬��Ҫ��Ϊ��������ȥʵ��;
+	//抽象方法不能有方法体，主要是为了让子类去实现;
 	abstract public function cry();
-	//�������п��԰������󷽷���ͬʱҲ���԰���ʵ���෽��
+	//抽象类中可以包含抽象方法，同时也可以包含实例类方法
 	public function getname(){
 		echo $this->name;
 	}
@@ -24,22 +24,22 @@ class Cat{
 	}
 }
 
-���⣺�����࣬ʵ������һ������ĸ�����涨��һЩ������Щ�Ĺ�ͬ�����Ժ���Ϊ����ʵ�������Լ���û������Щ���Ժ���Ϊ���ٱ��磺��ͨ�����ֲ࣬����ȵ�
-ע�⣺
-1�����һ��������abstract�����Σ���������һ�������࣬���һ��������abstract���Σ���ô�÷�������һ�����󷽷������󷽷������з�����=> abstract function cry()��  ��{}Ҳ��������
-2��������һ�����ܱ�ʵ���������������û�г��󷽷����������һ�������������һ�����󷽷��������һ��Ҫ����Ϊabstract��;
-3�����һ����̳�����һ�������࣬����������ʵ�ֳ����������еĳ��󷽷����������Լ�Ҳ����Ϊ�����ࣩ��
+理解：动物类，实际上是一个抽象的概念，它规定了一些动物有些哪共同的属性和行为，但实际上它自己并没收有那些属性和行为。再比如：交通工具类，植物类等等
+注意：
+1、如果一个类用了abstract来修饰，则该类就是一个抽象类，如果一个方法被abstract修饰，那么该方法就是一个抽象方法，抽象方法不能有方法体=> abstract function cry()；  连{}也不可以有
+2、抽象类一定不能被实例化，抽象类可以没有抽象方法，但是如果一个类包含了任意一个抽象方法，这个类一定要声明为abstract类;
+3、如果一个类继承了另一个抽象类，则该子类必须实现抽象类中所有的抽象方法（除非它自己也声明为抽象类）；
 
-�����ӿڣ�interface��
-�ӿھ��ǽ�һЩû��ʵ�ֵķ�������װ��һ�𣬵�ĳ����Ҫ�õ�ʱ���ٸ��ݾ����������Щ����д������
-�﷨�ṹ
-//�ӿ��Ƕ���淶�����Եģ�һ����Сд��i��ͷ��
+二、接口（interface）
+接口就是将一些没有实现的方法，封装在一起，到某个类要用的时候，再根据具体情况把这些方法写出来；
+语法结构
+//接口是定义规范、属性的，一般以小写的i开头；
 interface iUsb{
 	public function start();
 	public function stop();
 }
-//��д����࣬����ȥʵ�ֽӿ�
-//��һ����ʵ����ĳ���ӿڣ���ô����ͱ���ʵ�ֽӿڵ����з���
+//编写相机类，让它去实现接口
+//当一个类实现了某个接口，那么该类就必须实现接口的所有方法
 class Camera implements iUsb{
 	public function start(){
 		echo 'Camera Start Work';
@@ -48,7 +48,7 @@ class Camera implements iUsb{
 		echo 'Camera Stop Work';
 	}
 }
-//��дһ���ֻ���
+//编写一个手机类
 class Phone implements iUsb{
 	public function start(){
 		echo 'Phone Satrt Work';
@@ -61,56 +61,56 @@ $c=new Camera();
 $c->start();
 $p=new Phone();
 $p->start();
-ʲôʱ��ʹ�ýӿڣ�
-	1�����¹淶������������Ա��ʵ��
-	2�������ƽ�����࣬����Ҫȥʵ��ĳ�����ܣ�����ʵ�ֵķ�ʽ��һ����
+什么时候使用接口：
+	1、定下规范，让其他程序员来实现
+	2、当多个平级的类，都需要去实现某个功能，但是实现的方式不一样；
 
-С�᣺
-	1���ӿڲ��ܱ�ʵ�������ӿ������еķ��������������壻
-	2��һ�������ʵ�ֶ���ӿڣ��Զ��ţ������ָ� class demo implements if1,if2,if3{}
-	3���ӿ��п��������ԣ��������ǳ��������������������η���Ĭ����public���η���
-		�磺interface iUsb{
+小结：
+	1、接口不能被实例化，接口中所有的方法都不能有主体；
+	2、一个类可以实现多个接口，以逗号（，）分隔 class demo implements if1,if2,if3{}
+	3、接口中可以有属性，但必须是常量，常量不可以有修饰符（默认是public修饰符）
+		如：interface iUsb{
 				const A=90;
 			}
 			echo iUsb::A;
-	4���ӿ��еķ�����������public�ģ�Ĭ����public��
-	5��һ���ӿڲ��ܼ̳��������࣬���ǿ��Լ̳������Ľӿ�,һ���ӿڿ��Լ̳ж�������ӿ�
-		�磺interface �ӿ��� extends if1,if2{}
-	6��һ��������ڼ̳и����ͬʱʵ�������ӿ�
-		�磺class test extends testbase implements test1,test2{}
+	4、接口中的方法都必须是public的，默认是public；
+	5、一个接口不能继承其他的类，但是可以继承其它的接口,一个接口可以继承多个其它接口
+		如：interface 接口名 extends if1,if2{}
+	6、一个类可以在继承父类的同时实现其它接口
+		如：class test extends testbase implements test1,test2{}
 
-ʵ�ֽӿ�VS�̳��� 
-php�ļ̳��ǵ�һ�̳У�Ҳ����һ����ֻ�ܼ̳�һ�����࣬���������๦�ܵ���չ��һ����Ӱ�졣ʵ�ֽӿڿ��Կ����ǶԼ̳����һ�����䡣�̳��ǲ㼶�Ĺ�ϵ����̫����ʵ�ֽӿ���ƽ���Ĺ�ϵ��ʵ�ֽӿڿ����ڲ����Ƽ̳й�ϵ��ǰ���£���ĳ��������չ���ǳ���
+实现接口VS继承类 
+php的继承是单一继承，也就是一个类只能继承一个父类，这样对子类功能的扩展有一定的影响。实现接口可以看做是对继承类的一个补充。继承是层级的关系，不太灵活，而实现接口是平级的关系，实现接口可以在不打破继承关系的前提下，对某个功能扩展，非常灵活。
  
-����Final
+三、Final
  
-1���������ϣ��ĳ���಻����������̳У�����Ϊ�˰�ȫԭ��ȡ���������ô���Կ���ʹ��final
-    �﷨��
+1、如果我们希望某个类不被其它的类继承（比如为了安全原因等。。），那么可以考虑使用final
+    语法：
         final class A{}
-2���������ϣ��ĳ������������������д�����Կ���ʹ��final�����Σ�final���εķ������ǿ��Լ̳еģ���Ϊ�����ļ̳�Ȩȡ����public������ 
-    �磺
+2、如果我们希望某个方法，不被子类重写，可以考虑使用final来修饰，final修饰的方法还是可以继承的，因为方法的继承权取决于public的修饰 
+    如：
 	class A{
 		final public function getrate($salary){
 			return $salary*0.08;
 		}
 	}
 	class B extens A{
-		//���︸���getrate����ʹ����final�����������޷�����дgetrate
+		//这里父类的getrate方法使用了final，所以这里无法再重写getrate
 		//public function getrate($salary){
 		//    return $salary*0.01;
 		//}
 	}
-   3��final����������������         
+   3、final不能用来修饰属性         
  
-�ġ��ೣ����const��
+四、类常量（const）
  
-��ĳЩ����£����������������󣺵���ϣ��һ����Ա�������޸ģ�ϣ���ñ�����ֵ�ǹ̶�����ģ���ʱ����ʹ��const������������Ӧ��ȫ�ô�д�����Ҳ���$���ţ����������Լ����η���
-�﷨��
-	const ������=����ֵ;  //���븳��ֵ����Ϊ�����ǲ����޸ĵ�
-���ã�
-	����::������[�����ڲ�����self::������]   ����  �ӿ���::������  //�ӿ���ֻ��ʹ�ó���������ʹ�ñ���
+在某些情况下，可能有这样的需求：当不希望一个成员变量被修改，希望该变量的值是固定不变的，这时可以使用const常量（常量名应该全用大写，并且不带$符号，常量不可以加修饰符）
+语法：
+	const 常量名=常量值;  //必须赋初值，因为常量是不能修改的
+调用：
+	类名::常量名[本类内部可用self::常量名]   或者  接口名::常量名  //接口中只能使用常量，不能使用变量
  
-�磺
+如：
 	class A{
 		const TAX_RATE=0.08;
 		function paytax($salary){
@@ -119,9 +119,9 @@ php�ļ̳��ǵ�һ�̳У�Ҳ����һ����ֻ�ܼ̳�һ�����࣬���������๦�ܵ���չ��һ�����
 	}
 	$a=new A();
 	echo $a->paytax(100);
-ע��
-1���������Ա�����̳�
-2������������ĳ����ģ���������ĳ������
-��Ȼʵ�ֺܼ򵥵����ֻҪ�е����֪ʶ�Ϳ��Է�����ٵ�ʵ��php�������༭�����ˡ�
+注：
+1、常量可以被子类继承
+2、常量是属于某个类的，而不属于某个对象
+虽然实现很简单但大家只要有点基础知识就可以方便快速的实现php面向对象编辑操作了。
 
 
