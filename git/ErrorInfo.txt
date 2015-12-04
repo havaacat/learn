@@ -20,7 +20,7 @@ git branch --merged master | xargs git branch -d
 git checkout master
 git branch --merged master | grep -v ^\* | xargs git branch -d
 
-4.error: The following untracked working tree files would be overwritten by checko                                                                                                                                                                                               ut:
+4.error: The following untracked working tree files would be overwritten by checkout:
         app/controllers/StatisticsController.php
 Please move or remove them before you can switch branches.
 Aborting
@@ -28,5 +28,11 @@ Aborting
 git clean -d -f
 d -----删除未被添加到git的路径中的文件
 f -----强制运行
+
+5.fatal: unable to access;Failed connect to github.com:8087; No error
+git config --global http.proxy   
+查询到当前设置了代理，所以我取消这个设置：   	
+git config --global --unset http.proxy
+再查询，已经没有了代理，然后再push,成功了！
 
 

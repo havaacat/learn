@@ -1,0 +1,17 @@
+解决phpmyadmin上传大小限制（转）
+大多数都修改php.ini中的upload_max_filesize，但修改了这个以后，还是提示这个问题；
+那么更改如下几处：
+修改 PHP.ini
+file_uploads      on  　　　 是否允许通过HTTP上传文件的开关。默认为ON即是开
+upload_tmp_dir  　　--　　文件上传至服务器上存储临时文件的地方，如果没指定就会用系统默认的临时文件夹
+upload_max_filesize   20m  　 望文生意，即允许上传文件大小的最大值。默认为2M
+post_max_size   30m  　　　 指通过表单POST给PHP的所能接收的最大值，包括表单里的所有值。默认为8M
+
+说明
+一般地，设置好上述四个参数后，在网络正常的情况下，上传8M的大体积文件，只设置上述四项还一定能行的通。除非你的网络真有100M/S的上传高速，否则你还得继续设置下面的参数,那就是设置它的时间，（到这里，其实人家默认2M也是对的，况且用这个导的情况也不多撒）
+max_execution_time   300     每个PHP页面运行的最大时间值(秒)，默认30秒
+max_input_time         300     每个PHP页面接收数据所需的最大时间，默认60秒
+memory_limit          80m       每个PHP页面所吃掉的最大内存，默认8M，如果你机子的内存足够大的话，还可以设置大点儿
+设定 POST 数据所允许的最大大小。此设定也影响到文件上传。要上传大文件，该值必须大于 upload_max_filesize。
+如果配置脚本中激活了内存限制，memory_limit 也会影响文件上传。通常说，memory_limit 应该比 post_max_size 要大。
+
