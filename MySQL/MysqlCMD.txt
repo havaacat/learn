@@ -27,7 +27,7 @@ GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON production_1123.*  TO 'zhixin'@
 5.生效授权，创建完毕
 FLUSH PRIVILEGES;
 备注：
-1)不要直接使用INSERT语句添加user记录，使用INSERT可能出现：ERROR 1364 (HY000): Field 'ssl_cipher' doesn't have a default value错误。不过早期的MYSQL版本笔者倒没出现这个错误，因为天缘一直都是直接修改user表或直接使用INSERT语句完成，后来升级MYSQL到5.1的时候，发现可能会出现这个错误。
+1)不要直接使用INSERT语句添加user记录，使用INSERT可能出现：ERROR 1364 (HY000): Field 'ssl_cipher' doesn't have a default value错误。不过早期的MYSQL版本笔者倒没出现这个错误，因为一直都是直接修改user表或直接使用INSERT语句完成，后来升级MYSQL到5.1的时候，发现可能会出现这个错误。
 2)上文3和4，也可使用一句话GRANT ALL ON tbx.* TO 'username' IDENTIFIED BY 'password'，这句话会自动创建username并为之授权。更多授权权限可参考MYSQL官方网站。
 
 6.导入数据
