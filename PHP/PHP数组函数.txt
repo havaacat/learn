@@ -1,0 +1,15 @@
+本文用于总结PHP数组函数的用法
+1.in_array()
+in_array(value,array,type),type可选。如果设置该参数为true,则检查搜索的数据与数组的值的类型是否相同,如果是字符,还要检查大小写是否相同.
+
+2.array_push()
+int array_push ( array &array, mixed var [, mixed ...] )
+
+3.array_splice(),array_splice(array,offset,length,array)
+ a.array必需,规定数组;
+ b.offset必需,数值.如果offset为正,则从输入数组中该值指定的偏移量开始移除.如果 offset 为负,则从输入数组末尾倒数该值指定的偏移量开始移除.
+ c.length可选,数值.如果省略该参数,则移除数组中从 offset 到 结尾的所有部分.如果指定了 length 并且为正值,则移除这么多元素.如果指定了length且为负值,则移除从offset到数组末尾倒数length为止中间所有的元素.
+ d.被移除的元素由此数组中的元素替代.如果没有移除任何值,则此数组中的元素将插入到指定位置.
+ 
+4.array_search
+

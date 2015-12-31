@@ -3,3 +3,4 @@ Phalcon Developer Tools on Linux
 2.cd phalcon-devtools/
 3.ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
 4.chmod ugo+x /usr/bin/phalcon
+5.
