@@ -1,5 +1,7 @@
 一.安装tcl
+在安装redis进行make test测试时，出现You need tcl 8.5 or newer in order to run the Redis test，
  1.一种方法是wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz  
+   在unix文件中，执行./configure && make && make install
  2.另一种方法是yum install tcl
  
 二、安装redis
@@ -16,5 +18,5 @@
 三、安装PHP的redis扩展
  1.下载https://github.com/phpredis/phpredis
  2.安装扩展
-	./configure & make & make install
+	phpize && ./configure && make && make install
  3.etc/php.d/redis.ini extension=redis.so 
