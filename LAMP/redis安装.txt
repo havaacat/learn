@@ -15,6 +15,7 @@
  4.启动实例,执行redis-server redis.conf
 三、安装PHP的redis扩展
  1.下载https://github.com/phpredis/phpredis
- 2.安装扩展
+ 2.安装扩展 
+	phpize
 	./configure & make & make install
  3.etc/php.d/redis.ini extension=redis.so 
