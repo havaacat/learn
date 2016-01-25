@@ -14,3 +14,4 @@ http://pear.php.net/package/DB/download
 
 4.°²×°DB
 pear install DB-1.7.14.tgz 
+

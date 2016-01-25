@@ -1,0 +1,23 @@
+1.安装命令
+$ pear install PHP_CodeSniffer
+2.输出文档
+$ phpcs --report=checkstyle /path/to/code 
+$ phpcs --report=csv /path/to/code 
+$ phpcs --report=checkstyle /path/to/code 
+3.参数配置
+$ phpcs --config-set <option> <value> 
+$ phpcs --config-delete <option> 
+$ phpcs --config-show 
+default_standard  默认的编码标准
+report_format     默认的错误报告格式
+show_warnings     是否默认显示错误报告中的警告(WARNING)信息
+tab_width         默认的tab宽度相当于几个空格
+zend_ca_path      Zend编码标准所使用的配置选项，指向Zend Code Analyzer（Zend编码分析器）所在的路径
+$ phpcs --config-set default_standard PSR2
+$ phpcs --config-set report_format summary 
+$ phpcs --config-set show_warnings 0 
+$ phpcs --config-set tab_width 4 
+$ phpcs --extensions=php /path/to/code  
+$ phpcs --extensions=php,inc,lib /path/to/code 检查该目录中所有以php,inc,lib为扩展名的文件
+$ phpcs --ignore=*/tests/*,*/data/* /path/to/code 
+ 
