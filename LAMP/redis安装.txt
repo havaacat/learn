@@ -20,3 +20,6 @@
  2.安装扩展
 	phpize && ./configure && make && make install
  3.etc/php.d/redis.ini extension=redis.so 
+四、启动redis 
+redis-server.exe redis.conf 
+
