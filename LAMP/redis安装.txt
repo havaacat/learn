@@ -21,5 +21,5 @@
 	phpize && ./configure && make && make install
  3.etc/php.d/redis.ini extension=redis.so 
 ËÄ¡¢Æô¶¯redis 
-redis-server.exe redis.conf 
+redis-server redis.conf 
 
