@@ -1,0 +1,25 @@
+一.安装tcl
+在安装redis进行make test测试时，出现You need tcl 8.5 or newer in order to run the Redis test，
+ 1.一种方法是wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz  
+   在unix文件中，执行./configure && make && make install
+ 2.另一种方法是yum install tcl
+ 
+二、安装redis
+ 1.下载http://download.redis.io/releases/redis-3.0.6.tar.gz
+ 2.配置
+    将下载的tar包解压，修改redis-3.0.6下的redis.conf，主要修改下面几项：
+	daemonize yes                      # redis默认不是后台启动，这里修改成后台启动
+	cluster-enabled yes                # 允许redis支持集群模式
+	cluster-config-file nodes.conf     # 节点配置文件
+	cluster-node-timeout 15000         # 节点超时毫秒
+	appendonly yes
+ 3.安装make、make install
+ 4.启动实例,执行redis-server redis.conf
+三、安装PHP的redis扩展
+ 1.下载https://github.com/phpredis/phpredis
+ 2.安装扩展
+	phpize && ./configure && make && make install
+ 3.etc/php.d/redis.ini extension=redis.so 
+四、启动redis 
+redis-server redis.conf 
+

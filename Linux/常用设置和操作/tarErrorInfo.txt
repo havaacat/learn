@@ -1,0 +1,10 @@
+1.tar zxvf memcache.*.tar.gz
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+
+解决办法：
+mv memcache.*.tar.gz memcache.*.tar
+tar xvf memcache.*.tar
+完美解决
+

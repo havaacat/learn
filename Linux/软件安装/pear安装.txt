@@ -1,0 +1,17 @@
+pear是PHP扩展与应用库（the PHP Extension and Application Repository）的缩写。
+它是一个PHP扩展及应用的一个代码仓库，简单地说，pear就是PHP的cpan。
+在官网上有说明详细的安装信息，这里作简单说明。
+http://pear.php.net/manual/en/about-pear.php
+
+1.下载
+curl -o go-pear.php http://pear.php.net/go-pear.phar
+
+2.安装
+php go-pear.php
+
+3.下载DB
+http://pear.php.net/package/DB/download 
+
+4.安装DB
+pear install DB-1.7.14.tgz 
+
