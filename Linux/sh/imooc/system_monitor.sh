@@ -32,5 +32,7 @@ if [[ $# -eq 0 ]]; then
         who>/tmp/who
         echo -e '\E[32m' "Logged In Users" $reset_terminal && cat /tmp/who
     rm -f /tmp/who
+    #######################
+    system_mem_usages=$(awk '/MemTotal/{total=$2}/MemFree/{free=$2}END{print (total-free)/1024}' /proc/meminfo)
 fi
 
